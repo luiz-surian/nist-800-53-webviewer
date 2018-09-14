@@ -1,0 +1,36 @@
+html,
+body {
+  background-color: #f0f0f8;
+  font-size: 0.9rem;
+}
+h1,
+h2,
+h3 {
+  font-weight: bolder;
+  text-align: center;
+  min-height: 2.4rem;
+  line-height: 2rem;
+  border-bottom: 0.1rem solid #388e3c;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+  text-align: left;
+}
+.clickable {
+  cursor: pointer;
+}
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #388e3c;
+  border-color: #388e3c;
+  margin: 0 0.5rem;
+  padding: 0.2rem 0.6rem;
+}
