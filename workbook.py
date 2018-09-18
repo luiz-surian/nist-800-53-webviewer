@@ -8,9 +8,16 @@ file_path  = './bin/files/nist/'
 def _xhtml_parser(key, value):
     output = ''
     if key == 'ns2:p':
-        holder = f'{value["#text"]} \n'
-        if 'ns2:em' in value:
-            holder = holder.replace('[]', f'[{value["ns2:em"]}]')
+        if type(value) is dict:
+            holder = f'{value["#text"]} \n'
+            if 'ns2:em' in value:
+                holder = holder.replace('[]', f'[{value["ns2:em"]}]')
+        else:
+            holder = ''
+            for v in value:
+                holder += f'{v["#text"]} \n'
+                if 'ns2:em' in value:
+                    holder = holder.replace('[]', f'[{v["ns2:em"]}]')
             
         output += holder
 
@@ -144,5 +151,6 @@ def write(content):
     return file_name
 
 if __name__ == "__main__":
-    test = {'listing': ['{"AC-1":"AC-1 - Access Control Policy and Procedures - P1","AC-8":"AC-8 - System Use Notification - P1","AC-10":"AC-10 - Concurrent Session Control - P2","CM-1":"CM-1 - Configuration Management Policy and Procedures - P1","CM-9":"CM-9 - Configuration Management Plan - P1","CA-1":"CA-1 - Security Assessment and Authorization Policies and Procedures - P1"}']}
+    test = {'listing': ['{"AC-1":"AC-1 - Access Control Policy and Procedures - P1","AC-4":"AC-4 - Information Flow Enforcement - P1","AC-10":"AC-10 - Concurrent Session Control - P2","AC-14":"AC-14 - Permitted Actions Without Identification Or Authentication - P1","AC-19":"AC-19 - Access Control for Mobile Devices - P1"}']}
+    #test = {'listing': ['{"AC-1":"AC-1 - Access Control Policy and Procedures - P1","AC-8":"AC-8 - System Use Notification - P1","AC-10":"AC-10 - Concurrent Session Control - P2","CM-1":"CM-1 - Configuration Management Policy and Procedures - P1","CM-9":"CM-9 - Configuration Management Plan - P1","CA-1":"CA-1 - Security Assessment and Authorization Policies and Procedures - P1"}']}
     write(test)
