@@ -6,11 +6,11 @@ import urllib
 import os
  
 __author__ = 'Luiz Fernando Surian Filho'
+root = os.path.join(os.path.dirname(__file__), 'bin')
 
 class StaticServer(BaseHTTPRequestHandler):
  
     def do_GET(self):
-        root = os.path.join(os.path.dirname(__file__), 'bin')
         if self.path == '/':
             filename = root + '/index.html'
         else:
@@ -37,9 +37,11 @@ class StaticServer(BaseHTTPRequestHandler):
 
     def do_POST(self):
         length = int(self.headers['Content-Length'])
-        post_data = urllib.parse.parse_qs(self.rfile.read(length).decode('utf-8'))
+        post_data = urllib.parse.parse_qs(self.rfile.read(length).decode('utf-8'))      
         file_name = workbook.write(post_data)
+        print(f'Generated file:\n{root}\\{file_name}')
         self.wfile.write( file_name.encode('utf-8') )
+        
  
 def run(server_class=HTTPServer, handler_class=StaticServer, port=8080):
     server_address = ('', port)
