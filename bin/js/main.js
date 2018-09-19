@@ -155,16 +155,16 @@ $(document).ready(function() {
   $('a.btn-print').click(function() {
     list = JSON.stringify(list_build);
     console.log('requesting ', list);
-    $.ajax({
-      url: 'xls',
-      datatype: 'html',
-      type: 'POST',
-      data: {listing: list},
-      success: function(data) {
-          console.log('done');
-          $('a#btn-download').prop('href', data);
-          document.getElementById('btn-download').click();
-      }
+    $.post(window.location, {listing: list}, function(data) {
+      console.log('calling');
+    })
+    .done(function(data) {
+      console.log('success');
+      $('a#btn-download').prop('href', data);
+      document.getElementById('btn-download').click();
+    })
+    .fail(function() {
+      window.alert('Houve um erro ao trazer o arquivo para o navegador, por favor vá até o diretório padrão para obtê-lo.');
     });
   });
 
