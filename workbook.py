@@ -152,5 +152,4 @@ def write(content):
 
 if __name__ == "__main__":
     test = {'listing': ['{"AC-1":"AC-1 - Access Control Policy and Procedures - P1","AC-4":"AC-4 - Information Flow Enforcement - P1","AC-10":"AC-10 - Concurrent Session Control - P2","AC-14":"AC-14 - Permitted Actions Without Identification Or Authentication - P1","AC-19":"AC-19 - Access Control for Mobile Devices - P1"}']}
-    #test = {'listing': ['{"AC-1":"AC-1 - Access Control Policy and Procedures - P1","AC-8":"AC-8 - System Use Notification - P1","AC-10":"AC-10 - Concurrent Session Control - P2","CM-1":"CM-1 - Configuration Management Policy and Procedures - P1","CM-9":"CM-9 - Configuration Management Plan - P1","CA-1":"CA-1 - Security Assessment and Authorization Policies and Procedures - P1"}']}
     write(test)
